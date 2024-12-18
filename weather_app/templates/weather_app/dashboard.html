@@ -1,0 +1,18 @@
+{% extends 'weather_app/base.html' %}
+
+{% block content %}
+    <form method="get">
+        <input type="text" name="city" placeholder="Enter city" value="{{ city }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if data %}
+        <h2>Weather in {{ data.name }}</h2>
+        <p>Temperature: {{ data.main.temp }}°C</p>
+        <p>Condition: {{ data.weather.0.description }}</p>
+        <p>Humidity: {{ data.main.humidity }}%</p>
+        <p>Wind Speed: {{ data.wind.speed }} m/s</p>
+    {% else %}
+        <p>No data found.</p>
+    {% endif %}
+{% endblock %}
